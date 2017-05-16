@@ -1,0 +1,18 @@
+<h1>Cidades</h1>
+
+<table>
+  <tr>
+    <td>Nome</td>
+    <td>Geocódigo</td>
+    <td>Latitude</td>
+    <td>Longtude</td>
+  </tr>
+   <% @cities.each do |c| %>
+      <tr>
+        <td><%= c[:nome] %></td>
+        <td><%= c[:geocodigo] %></td>
+        <td><%= c[:latitude] %></td>
+        <td><%= c[:longitude] %></td>
+      </tr>
+   <% end %>
+</table>
