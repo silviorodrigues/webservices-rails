@@ -1,0 +1,10 @@
+<h1>Nova cidade</h1>
+
+<%= form_tag cities_path, :method => :post do %>
+   Nome: <%= text_field_tag :nome %><br />
+   Geocódigo: <%= text_field_tag :geocodigo %><br />
+   Latitude: <%= text_field_tag :latitude %><br/><br/>
+   Longitude: <%= text_field_tag :longitude %><br/><br/>
+   <%= submit_tag "Salvar" %>
+   <%= link_to "Cancelar", root_path %>
+<% end %>

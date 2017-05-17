@@ -6,6 +6,7 @@
     <td>Geocódigo</td>
     <td>Latitude</td>
     <td>Longtude</td>
+    <td></td>
   </tr>
    <% @cities.each do |c| %>
       <tr>
@@ -13,6 +14,26 @@
         <td><%= c[:geocodigo] %></td>
         <td><%= c[:latitude] %></td>
         <td><%= c[:longitude] %></td>
+        <td><%= link_to "Ver", city_path(c[:geocodigo]) %></td>
       </tr>
    <% end %>
 </table>
+
+<h2>Consultar distância entre cidades</h2>
+<%= form_tag url_for(:controller => 'cities', :action => 'distance'), :method => 'get' do  %>
+  <%= select("distance", "first_city", @cities.each.map {|c| [c[:nome], c[:geocodigo]] }) %>
+  <p>até</p>
+  <%= select("distance", "second_city", @cities.each.map {|c| [c[:nome], c[:geocodigo]] }) %>
+   <%= submit_tag "Calcular distância" %>
+<% end %>
+<br/><br/>
+
+<h2>Consultar frete entre cidades</h2>
+<%= form_tag url_for(:controller => 'cities', :action => 'truckage'), :method => 'get' do  %>
+  <%= select("truckage", "first_city", @cities.each.map {|c| [c[:nome], c[:geocodigo]] }) %>
+  <p>até</p>
+  <%= select("truckage", "second_city", @cities.each.map {|c| [c[:nome], c[:geocodigo]] }) %>
+   <%= submit_tag "Calcular frete" %>
+<% end %>
+<br/><br/>
+<%= link_to "Nova cidade", new_city_path %>
