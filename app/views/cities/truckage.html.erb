@@ -1,4 +1,44 @@
-<h1>Valor do frete</h1>
+<h1 class="title">Valor do frete</h1>
 
-<%= @truckage %>
-<%= link_to "Voltar", root_path %>
+<div class="field">
+  <label class="label">Origem</label>
+  <p class="control">
+    <%= text_field_tag :origem, @truckage[:origem], class: 'input', :readonly => true %>
+  </p>
+</div>
+
+<div class="field">
+  <label class="label">Destino</label>
+  <p class="control">
+    <%= text_field_tag :destino, @truckage[:destino], class: 'input', :readonly => true %>
+  </p>
+</div>
+
+<div class="field">
+  <label class="label">Valor</label>
+  <p class="control">
+    <%= text_field_tag :valor, @truckage[:valor], class: 'input', :readonly => true %>
+  </p>
+</div>
+
+<div class="field">
+  <label class="label">Metros</label>
+  <p class="control">
+    <%= text_field_tag :metros, @truckage[:metros], class: 'input', :readonly => true %>
+  </p>
+</div>
+
+<div class="field">
+  <label class="label">Quilometros</label>
+  <p class="control">
+    <%= text_field_tag :quilometros, @truckage[:quilometros], class: 'input', :readonly => true %>
+  </p>
+</div>
+
+<div class="field">
+  <label class="label">Milhas</label>
+  <p class="control">
+    <%= text_field_tag :milhas, @truckage[:milhas], class: 'input', :readonly => true %>
+  </p>
+</div>
+<%= link_to "Voltar", root_path, class: 'button is-info' %>

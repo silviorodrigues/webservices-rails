@@ -1,10 +1,33 @@
-<h1>Nova cidade</h1>
+<h1 class="title">Nova cidade</h1>
 
 <%= form_tag cities_path, :method => :post do %>
-   Nome: <%= text_field_tag :nome %><br />
-   Geocódigo: <%= text_field_tag :geocodigo %><br />
-   Latitude: <%= text_field_tag :latitude %><br/><br/>
-   Longitude: <%= text_field_tag :longitude %><br/><br/>
-   <%= submit_tag "Salvar" %>
-   <%= link_to "Cancelar", root_path %>
+  <div class="field">
+    <label class="label">Nome</label>
+    <p class="control">
+      <%= text_field_tag :nome, "", class: 'input' %>
+    </p>
+  </div>
+
+  <div class="field">
+    <label class="label">Geocódigo</label>
+    <p class="control">
+      <%= text_field_tag :geocodigo, "", class: 'input' %>
+    </p>
+  </div>
+
+  <div class="field">
+    <label class="label">Latitude</label>
+    <p class="control">
+      <%= text_field_tag :latitude, "", class: 'input' %>
+    </p>
+  </div>
+
+  <div class="field">
+    <label class="label">Longitude</label>
+    <p class="control">
+      <%= text_field_tag :longitude, "", class: 'input' %>
+    </p>
+  </div>
+   <%= submit_tag "Salvar", class: 'button is-info' %>
+   <%= link_to "Cancelar", root_path, class: 'button is-info is-outlined' %>
 <% end %>

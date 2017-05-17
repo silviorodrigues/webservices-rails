@@ -1,39 +1,84 @@
-<h1>Cidades</h1>
 
-<table>
-  <tr>
-    <td>Nome</td>
-    <td>Geocódigo</td>
-    <td>Latitude</td>
-    <td>Longtude</td>
-    <td></td>
-  </tr>
-   <% @cities.each do |c| %>
-      <tr>
-        <td><%= c[:nome] %></td>
-        <td><%= c[:geocodigo] %></td>
-        <td><%= c[:latitude] %></td>
-        <td><%= c[:longitude] %></td>
-        <td><%= link_to "Ver", city_path(c[:geocodigo]) %></td>
-      </tr>
-   <% end %>
-</table>
+<div class="columns">
+  <div class="column is-half">
+    <div class="columns">
+      <div class="column is-three-quarters">
+        <h1 class="title">Cidades</h1>
+      </div>
+      <div class="column">
+        <%= link_to "Nova cidade", new_city_path, class: 'button is-info' %>
+      </div>
+    </div>
+    <% @cities.each do |c| %>
+      <div class="box">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image is-64x64">
+              <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><%= c[:nome] %></strong> <small>Geocódigo: <%= c[:geocodigo] %></small>
+                <br>
+                Latitude: <%= c[:latitude] %><br>
+                Longitude: <%= c[:longitude] %>
+              </p>
+            </div>
+            <nav class="level is-mobile">
+              <div class="level-left">
+                <%= link_to(city_path(c[:geocodigo])) do %>
+                  <span class="icon is-small"><i class="fa fa-eye"></i></span>
+                  Ver mais
+                <% end %>
+                </a>
+              </div>
+            </nav>
+          </div>
+        </article>
+      </div>
+    <% end %>
+  </div>
 
-<h2>Consultar distância entre cidades</h2>
-<%= form_tag url_for(:controller => 'cities', :action => 'distance'), :method => 'get' do  %>
-  <%= select("distance", "first_city", @cities.each.map {|c| [c[:nome], c[:geocodigo]] }) %>
-  <p>até</p>
-  <%= select("distance", "second_city", @cities.each.map {|c| [c[:nome], c[:geocodigo]] }) %>
-   <%= submit_tag "Calcular distância" %>
-<% end %>
-<br/><br/>
+  <div class="column is-half">
+    <h1 class="title">Ferramentas</h1>
+    <div class="box">
+      <h2 class="title is-4">Consultar distância entre cidades</h2>
+      <%= form_tag url_for(:controller => 'cities', :action => 'distance'), :method => 'get' do  %>
+        <div class="field is-grouped">
+          <p class="control">
+            <span class="select">
+              <%= select("distance", "first_city", @cities.each.map {|c| [c[:nome], c[:geocodigo]] }) %>
+            </span>
+          </p>
+          <p class="control">
+            <span class="select">
+              <%= select("distance", "second_city", @cities.each.map {|c| [c[:nome], c[:geocodigo]] }) %>
+            </span>
+          </p>
+        </div>
+        <%= submit_tag "Calcular distância", class: 'button is-info is-outlined' %>
+      <% end %>
+    </div>
 
-<h2>Consultar frete entre cidades</h2>
-<%= form_tag url_for(:controller => 'cities', :action => 'truckage'), :method => 'get' do  %>
-  <%= select("truckage", "first_city", @cities.each.map {|c| [c[:nome], c[:geocodigo]] }) %>
-  <p>até</p>
-  <%= select("truckage", "second_city", @cities.each.map {|c| [c[:nome], c[:geocodigo]] }) %>
-   <%= submit_tag "Calcular frete" %>
-<% end %>
-<br/><br/>
-<%= link_to "Nova cidade", new_city_path %>
+    <div class="box">
+      <h2 class="title is-4">Consultar frete entre cidades</h2>
+      <%= form_tag url_for(:controller => 'cities', :action => 'truckage'), :method => 'get' do  %>
+        <div class="field is-grouped">
+          <p class="control">
+            <span class="select">
+              <%= select("truckage", "first_city", @cities.each.map {|c| [c[:nome], c[:geocodigo]] }) %>
+            </span>
+          </p>
+          <p class="control">
+            <span class="select">
+              <%= select("truckage", "second_city", @cities.each.map {|c| [c[:nome], c[:geocodigo]] }) %>
+            </span>
+          </p>
+        </div>
+        <%= submit_tag "Calcular frete", class: 'button is-info is-outlined' %>
+      <% end %>
+    </div>
+  </div>
+</div>

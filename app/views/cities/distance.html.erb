@@ -1,4 +1,23 @@
-<h1>Distancia entre cidades</h1>
+<h1 class="title">Distancia entre cidades</h1>
 
-<%= @distance %>
-<%= link_to "Voltar", root_path %>
+<div class="field">
+  <label class="label">Metros</label>
+  <p class="control">
+    <%= text_field_tag :metros, @distance[:metros], class: 'input', :readonly => true %>
+  </p>
+</div>
+
+<div class="field">
+  <label class="label">Quilometros</label>
+  <p class="control">
+    <%= text_field_tag :quilometros, @distance[:quilometros], class: 'input', :readonly => true %>
+  </p>
+</div>
+
+<div class="field">
+  <label class="label">Milhas</label>
+  <p class="control">
+    <%= text_field_tag :milhas, @distance[:milhas], class: 'input', :readonly => true %>
+  </p>
+</div>
+<%= link_to "Voltar", root_path, class: 'button is-info' %>
